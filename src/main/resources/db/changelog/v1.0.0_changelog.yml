@@ -4,7 +4,7 @@ databaseChangeLog:
       author: ediet
       changes:
         - createTable:
-            tableName: pixelwar
+            tableName: pixel
             columns:
               - column:
                   name: id
@@ -24,8 +24,8 @@ databaseChangeLog:
                   type: TEXT
               - column:
                   name: user
-                  type: BIGINT
+                  type: TEXT
         - addUniqueConstraint:
-            tableName: pixelwar
+            tableName: pixel
             columnNames: x, y
             constraintName: uc_x_y
