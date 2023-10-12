@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: init-table
+      author: ediet
+      changes:
+        - createTable:
+            tableName: pixelwar
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: x
+                  type: BIGINT
+              - column:
+                  name: y
+                  type: BIGINT
+              - column:
+                  name: color
+                  type: TEXT
+              - column:
+                  name: user
+                  type: BIGINT
+        - addUniqueConstraint:
+            tableName: pixelwar
+            columnNames: x, y
+            constraintName: uc_x_y

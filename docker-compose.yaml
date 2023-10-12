@@ -1,0 +1,10 @@
+version: "3.6"
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: pixelwar
+      POSTGRES_PASSWORD: pixelwar
+      POSTGRES_DB: pixelwar
+    ports:
+      - "5432:5432"

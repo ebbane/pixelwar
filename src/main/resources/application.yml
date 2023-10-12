@@ -1,0 +1,24 @@
+
+# SPRING
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    database: POSTGRESQL
+    show-sql: false
+    properties:
+      hibernate.id.new_generator_mappings: true
+      hibernate.connection.provider_disables_autocommit: false
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_query_cache: false
+      hibernate.generate_statistics: falses
+      hibernate.use_sql_comments: true
+      hibernate.format_sql: false
+  liquibase:
+    contexts: none
+    enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pixelwar
+    username: pixelwar
+    password: pixelwar
