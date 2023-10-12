@@ -1,5 +1,14 @@
 version: "3.6"
 services:
+  demo:
+    build:
+      context: ./
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/pixelwar
   postgres:
     image: postgres:latest
     environment:
