@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PixelWar WebSocket</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+  <script src="app.js"></script>
+  <style>
+
+    .colorPalette {
+      display: flex;
+    }
+    .colorOption {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      margin: 5px;
+      border: 1px solid #000;
+    }
+
+  </style>
+</head>
+<body>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+  enabled. Please enable
+  Javascript and reload this page!</h2></noscript>
+<div id="main-content" class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="name">What is your name ?</label>
+          <input type="text" id="name" class="form-control" placeholder="Your name here...">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="colorPalette">
+      <div class="colorOption" style="background-color: red" data-color="red"></div>
+      <div class="colorOption" style="background-color: green" data-color="green"></div>
+      <div class="colorOption" style="background-color: blue" data-color="blue"></div>
+    </div>
+    <canvas id="pixelCanvas" width="1000" height="700" style="border: 1px solid #000;"></canvas>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        canvas = document.getElementById("pixelCanvas");
+        canvasContext = canvas.getContext("2d");
+        const colorOptions = document.querySelectorAll(".colorOption");
+        manageColorSelected(colorOptions)
+        canvas.addEventListener("click", function(event) {
+          const pixel = new Pixel(event.offsetX, event.offsetY, selectedColor)
+          sendPixel(pixel)
+          canvasContext.fillStyle = pixel.color;
+          canvasContext.fillRect(pixel.x, pixel.y, 1, 1);
+        });
+      });
+    </script>
+  </div>
+</div>
+</body>
+</html>

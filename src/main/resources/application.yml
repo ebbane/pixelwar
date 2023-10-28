@@ -1,0 +1,12 @@
+
+# SPRING
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  liquibase:
+    contexts: none
+    enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pixelwar
+    username: pixelwar
+    password: pixelwar

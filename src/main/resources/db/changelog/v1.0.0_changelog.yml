@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: init-table
+      author: ediet
+      changes:
+        - createTable:
+            tableName: pixel
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: x
+                  type: BIGINT
+              - column:
+                  name: y
+                  type: BIGINT
+              - column:
+                  name: color
+                  type: TEXT
+              - column:
+                  name: user
+                  type: TEXT
+        - addUniqueConstraint:
+            tableName: pixel
+            columnNames: x, y
+            constraintName: uc_x_y
